@@ -54,7 +54,7 @@
 			<p>Our Main Address:</p>
 			<p class="lead">
 				Room #201, 2nd floor of
-    			Bohemian Cafe, Lower Assumption Road, Baguio City.
+    			Bohemian Cafe, Lower Assumption Road Baguio City.
 			</p>
 		</div>
 	</div>
@@ -66,4 +66,4 @@
 </style>
 <?php
 	include_once "footer.php";
-?>
+?> 
