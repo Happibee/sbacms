@@ -1,8 +1,8 @@
 <?php 
 	session_start();
 	include_once 'employeeheader.php';
-	include_once '../config/database.php';
-  	include_once '../classes/employee.php';
+	include_once '../../config/database.php';
+  	include_once '../../classes/employee.php';
 ?>
 	<?php
 		//page logged in

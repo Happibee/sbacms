@@ -1,9 +1,9 @@
 <?php
   session_start();
   include_once 'managerheader.php';
-  include_once '../config/database.php';
-  include_once '../classes/employee.php';
-  include_once '../classes/service.php';
+  include_once '../../config/database.php';
+  include_once '../../classes/employee.php';
+  include_once '../../classes/service.php';
 
   if(!isset($_SESSION['employeeId'])){
     header('Location: ../employee/employeelogin.php');
