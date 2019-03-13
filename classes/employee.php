@@ -16,6 +16,13 @@
 			$this->conn=$db;
 		}
 
+		fucntion readEmployees(){
+			$query = "SELECT * FROM employee";
+			
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+		}
+
 		function readOneAdmin(){
 			$query = "SELECT * FROM employee WHERE type= 'admin'";
 			
@@ -87,7 +94,7 @@
 			if($num > 0){
 				session_start();
 				//data from DB to display on user page from login function
-				$_SESSION['employeeId'] = $row['employeeId'];
+				$_SESSION['employeeId'] = $row['id'];
 				$_SESSION['firstName'] = $row['firstName'];
 				$_SESSION['lastName'] = $row['lastName'];
 				$_SESSION['userName'] = $row['userName'];

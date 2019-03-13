@@ -1,8 +1,6 @@
 <?php
 	session_start();
-	include_once 'header.php';
-	include_once 'config/database.php';
-  include_once 'classes/customer.php';
+	include_once 'includes/header.php';
 ?>
 
 	<div class="jumbotron jumbotron-fluid">
@@ -35,7 +33,7 @@
     else {
       echo "
         <div class='feedback jumbotron-fluid'>
-          <p class='lead'>Want to give feedback? Login and tell us your thoughts!&nbsp;<a href='login.php' class='btn btn-warning btn-sm'>Login</a></p>
+          <p class='lead'>Want to give feedback? Login and tell us your thoughts!&nbsp;<a href='util/login.php' class='btn btn-warning btn-sm'>Login</a></p>
          </div>
       ";
     }
@@ -52,5 +50,5 @@
 	</style>
 
 <?php
-	include_once 'footer.php';
+	include_once 'includes/footer.php';
 ?>

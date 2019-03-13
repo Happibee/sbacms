@@ -1,13 +1,11 @@
 <!--HOME PAGE FOR GUESTS-->
 <?php
   session_start();
-	include_once 'header.php';
-	include_once 'config/database.php';
-  include_once 'classes/customer.php';
+	include_once '../includes/tempo/header.php';
 
-  if(!isset($_SESSION['custId'])){
-    header("Location: guesthome.php");
-  }
+  // if(!isset($_SESSION['custId'])){
+  //   header("Location: ../guesthome.php");
+  // }
 ?>
 <!--Salon part-->
 <div class="homesalon">
@@ -47,10 +45,10 @@
 <!--FEEDBACKS-->
 <div class="feed">
   <div class="container">
-    <h1 class="display-4"><center>Feedbacks</center></h1>
+    <h1 class="display-4"><center>Feedback</center></h1>
     <center>
       <p class="lead">
-        Feedbacks of our Customers
+        Feedback from our Customers
       </p>
     </center>
     <div class='container'>
@@ -94,5 +92,5 @@
 </style>
 
 <?php
-	include_once 'footer.php';
+	include_once '../includes/footer.php';
 ?>
