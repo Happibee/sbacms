@@ -1,5 +1,5 @@
 <!--font awesome icons -->
-<link rel="stylesheet" href="../../assets/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="../assets/font-awesome/css/all.min.css">
 <center>
 <div>
 <a href='#' class="fab fa-facebook" id='fb'></a>
