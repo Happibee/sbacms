@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	include "managerheader.php";
-	include_once "../../config/database.php";
+	include_once "../config/database.php";
 
-	include_once "../../classes/user.php";
-	include_once "../../classes/employee.php";
+	include_once "../classes/user.php";
+	include_once "../classes/employee.php";
 ?>
 <div class="employeepart">
 	<div class="container">

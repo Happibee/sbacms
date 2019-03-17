@@ -1,15 +1,16 @@
 <?php
 	session_start();
 	include_once 'employeeheader.php';
-	include_once '../../config/database.php';
-  include_once '../../classes/employee.php';
+	include_once '../config/database.php';
+  	include_once '../classes/employee.php';
 
-	if(isset($_SESSION['employeeId'])){
+  	if(isset($_SESSION['employeeId'])){
 		$database = new Database();
-		$db=$database->getConnection();
+  		$db=$database->getConnection();
+  
+  		$employee = new Employee($db);
+  		$stmt = $employee->readOneEmployee();
 
-		$employee = new Employee($db);
-		$stmt = $employee->readOneEmployee();
 	}
 	//page logged in
 	else {

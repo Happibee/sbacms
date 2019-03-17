@@ -1,11 +1,11 @@
 <?php
 	session_start();
-	include_once "../../config/database.php";
-	include_once "../../classes/employee.php";
+	include_once "../config/database.php";
+	include_once "../classes/employee.php";
 	include_once "managerheader.php";
 	
 	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../../employee/employeelogin.php');
+    	header('Location: ../employee/employeelogin.php');
   	}
 ?>
 
@@ -38,6 +38,8 @@
 				<td>Pending</td>
 				<td>
 					<a href="appointmentresched.php" class="btn btn-danger">Reschedule</a>
+					<!--<a href="appointmentedit.php" class="btn btn-secondary">Edit</a>
+					<button type="button" class="btn btn-danger" onclick='return confirm("Are you sure you want to delete?");'>Delete</button>-->
 				</td>
 			</tr>
 		</tbody>
@@ -52,3 +54,22 @@
     color: white;
   }
 </style>
+<script> 
+/*
+  $(document).on('click', '.submit-object', function(){
+    var id = $(this).attr('submit');
+    var q = confirm("Do you want to register?");
+    
+    if(q == true){
+      $.post('login.php', {
+        userId: id
+      }, function(data){
+        location.reload();
+      }).fail(function() {
+        alert("Unable to create Account");
+      });
+    }
+    return false;
+  });
+ */
+</script>

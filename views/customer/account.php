@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	include_once "../includes/tempo/header.php";
+	include_once "header.php";
+	include_once 'config/database.php';
+  	include_once 'classes/customer.php';
 
   	if(isset($_SESSION['custId'])){
 			$database = new Database();

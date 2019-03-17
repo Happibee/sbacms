@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once "includes/header.php";
+	include_once "header.php";
 
 	if(isset($_SESSION['custId'])){
 			$database = new Database();
@@ -8,6 +8,9 @@
   
   			$customer = new Customer($db);
   			$stmt = $customer->readOneUser();
+
+
+			echo "";
 	}
 ?>
 <div class="aboutwindow">
@@ -41,7 +44,7 @@
 			<center><h2>We are located here:</h2>
 					</br>
 					</br>
-					<img width="90px" height="90px" src="../assets/img/arrowright.png">
+					<img width="90px" height="90px" src="pics/arrowright.png">
 			</center>
 		</div>
 		<div class="form-group col-md-4">
@@ -62,5 +65,5 @@
 	}
 </style>
 <?php
-	include_once "includes/footer.php";
+	include_once "footer.php";
 ?> 

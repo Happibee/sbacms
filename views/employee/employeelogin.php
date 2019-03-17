@@ -1,6 +1,9 @@
 <?php
 	session_start();
+	include_once "../config/database.php";
+	include_once "../classes/employee.php";
 	include_once "employeeheader.php";
+	
 ?>
 
 <div class="fluid">
@@ -41,8 +44,7 @@
 		$employee->password = $_POST['password'];
 	
 			if($employee->login()){
-				header("Location: employeehome.php");
-				
+				header("Location: employee.php");
 			}
 			else{
 				echo "<center>Incorrect Email or Password</center>";
