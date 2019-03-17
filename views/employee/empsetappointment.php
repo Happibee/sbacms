@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	include_once 'employeeheader.php';
-	include_once '../../config/database.php';
-	include_once '../../classes/schedule.php';
-	include_once '../../classes/service.php';
+	include_once '../config/database.php';
+	include_once '../classes/schedule.php';
+	include_once '../classes/service.php';
 
 	$database = new Database();
   $db = $database->getConnection();

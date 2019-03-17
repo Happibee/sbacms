@@ -1,8 +1,11 @@
 <?php
   ob_start();
-	include_once 'includes/header.php';
+	include_once 'header.php';
+	include_once "classes/customer.php";
+	include_once "config/database.php";
+	include_once "footer.php";
 ?>
-<form method="POST" action="registration.php">
+<form method="POST" action="useradd.php">
 <div class="">
 </div>
   <div class="res">
@@ -39,11 +42,11 @@
     <div class="row">
       <div class="form-group col-md-8">
         <label for="inputEmail4"><font color="white">Address *</font></label>
-        <input type="text" class="form-control" id="inputFirstname" placeholder="First Name" name="address" required>
+        <input type="text" class="form-control" id="inputFirstname" placeholder="First Name" name="firstname" required>
       </div>
       <div class="form-group col-md-4">
         <label for="inputEmail4"><font color="white">Contact Number *</font></label>
-        <input type="text" class="form-control" id="inputFirstname" placeholder="First Name" name="contactNo" required>
+        <input type="text" class="form-control" id="inputFirstname" placeholder="First Name" name="firstname" required>
       </div>
     </div>
     <div class="row">

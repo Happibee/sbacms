@@ -1,7 +1,8 @@
 <!--HOME PAGE FOR GUESTS-->
 <?php
   session_start();
-	include_once 'includes/header.php';
+	include_once 'header.php';
+	include_once 'config/database.php';
 ?>
 <!--Salon part-->
 <div class="homesalon">
@@ -24,13 +25,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/img/salon1.jpg" alt="First slide">
+      <img class="d-block w-100" src="pics/salon1.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/salon2.jpg" alt="Second slide">
+      <img class="d-block w-100" src="pics/salon2.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/salon3.jpg" alt="Third slide">
+      <img class="d-block w-100" src="pics/salon3.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -66,13 +67,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/img/serv1.jpg" alt="First slide">
+      <img class="d-block w-100" src="pics/serv1.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/serv2.jpg" alt="Second slide">
+      <img class="d-block w-100" src="pics/serv2.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/serv3.jpg" alt="Third slide">
+      <img class="d-block w-100" src="pics/serv3.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
@@ -107,13 +108,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/img/sty1.jpg" alt="First slide">
+      <img class="d-block w-100" src="pics/sty1.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/sty2.jpg" alt="Second slide">
+      <img class="d-block w-100" src="pics/sty2.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/sty3.jpg" alt="Third slide">
+      <img class="d-block w-100" src="pics/sty3.jpg" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -130,10 +131,10 @@
 <!--FEEDBACKS-->
 <div class="feed">
   <div class="container">
-    <h1 class="display-4"><center>Feedback</center></h1>
+    <h1 class="display-4"><center>Feedbacks</center></h1>
     <center>
       <p class="lead">
-        Feedback from our Customers
+        Feedbacks of our Customers
       </p>
     </center>
     <div class='container'>
@@ -172,5 +173,5 @@
 </style>
 
 <?php
-	include_once 'includes/footer.php';
+	include_once 'footer.php';
 ?>

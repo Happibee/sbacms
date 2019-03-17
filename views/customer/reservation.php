@@ -1,11 +1,11 @@
 <?php
 	session_start();
-	include_once '../includes/tempo/header.php';
-	include_once '../../config/database.php';
-  	include_once '../../classes/customer.php';
-	include_once '../../classes/schedule.php';
-	include_once '../../classes/service.php';
-	include_once '../../classes/employee.php';
+	include_once 'header.php';
+	include_once 'config/database.php';
+  	include_once 'classes/customer.php';
+	include_once 'classes/schedule.php';
+	include_once 'classes/service.php';
+	include_once 'classes/employee.php';
   
   	if(!isset($_SESSION['custId'])){
     	header("Location: login.php");

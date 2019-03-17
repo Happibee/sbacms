@@ -68,7 +68,7 @@
 		if($num > 0){
 			session_start();
 			//data from DB to display on user page from login function
-			$_SESSION['custId'] = $row['id'];
+			$_SESSION['custId'] = $row['custId'];
 			$_SESSION['firstName'] = $row['firstName'];
 			$_SESSION['lastName'] = $row['lastName'];
 			$_SESSION['userName'] = $row['userName'];

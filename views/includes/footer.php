@@ -1,5 +1,6 @@
 <?php
-
+	include_once 'config/database.php';
+  	include_once 'classes/customer.php';
 ?>
 
 	<?php
@@ -16,8 +17,6 @@
     }
     */
 	?>
-  
+
 	</body>
 </html>
-
-<script type="text/javascript" src="../../assets/js/scripts.js"></script>
