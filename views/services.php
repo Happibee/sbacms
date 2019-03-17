@@ -1,8 +1,6 @@
 <?php
 	session_start();
-	include_once 'header.php';
-	include_once 'config/database.php';
-  include_once 'classes/customer.php';
+	include_once 'includes/header.php';
 ?>
 
 <div class="servicelogo">
@@ -23,7 +21,7 @@
 			else {
 				echo "
 					<div class='reserve'>
-						<p>Want to have an appointment? Book a schedule now by logging in! Login <a href='login.php'>here</a></p>
+						<p>Want to have an appointment? Book a schedule now by logging in! Login <a href='util/login.php'>here</a></p>
 					</div>
 				";
 			}
@@ -109,5 +107,5 @@
 </style>
 
 <?php
-	include_once 'footer.php';
+	include_once 'includes/footer.php';
 ?>

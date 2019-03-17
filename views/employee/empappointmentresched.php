@@ -1,12 +1,32 @@
 <?php
 	session_start();
-	include_once "../config/database.php";
-	include_once "../classes/user.php";
+	include_once "../../config/database.php";
+	include_once "../../classes/user.php";
+	include_once "../../classes/appointment.php";
 	include_once "employeeheader.php";
 	
 	if(!isset($_SESSION['employeeId'])){
     	header('Location: ../employee/employeelogin.php');
-  	}
+	}
+
+	$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Missing ID');
+	  
+	$appointment = new Appointment($db);
+	$appointment->id = $id;
+	
+	$appointment->getOneAppointment();
+
+	if(isset($_POST['update'])){
+		$appointment->date = $_POST['date'];
+		$appointment->time = $_POST['time'];
+			
+		if($appointment->rescheduleAppointment()){
+			header("Location: employeehome.php");
+		}
+		else{
+			echo "Failed to reschedule";
+		}
+	}
 ?>
 <div class="res">
 	<div class="container">
@@ -15,6 +35,7 @@
 </div>
 
 <div class="container">
+<form method="POST" action="empappointmentresched.php?id=<?php $appointment->id ?>">
 	<table class="table table-borderless">
 		<thead class="thead-dark">
 			<tr>
@@ -29,22 +50,24 @@
 		<!--TEMPORARY scripts later-->
 		<tbody>
 			<tr>
-				<th scope="row">2</th>
+				<th><?php  echo $appointment->id; ?></th>
 				<td>
-					<input type="text" class="form-control" name="serviceName" value="02/1/2019">
+					<input type="text" class="form-control" name="date" value="<?php  echo $appointment->date; ?>">
 				</td>
 				<td>
-					<input type="text" class="form-control" name="serviceName" value="01:00 AM">
+					<input type="text" class="form-control" name="time" value="<?php  echo $appointment->time; ?>">
 				</td>
-				<td>Hair Service</td>
-				<td>John</td>
+			
+				<td><?php echo $appointment->serviceName; ?></td>
+				<td><?php echo $appointment->customer_name; ?></td>
 				<td>
-					<button type="button" class="btn btn-primary">Save</button>
+				<button type="submit" class="btn btn-primary" name="update">Save</button>
 					<a href="employeehome.php" class="btn btn-danger">Cancel</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	</form>
 </div>
 
 <style>
