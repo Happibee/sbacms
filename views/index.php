@@ -1,9 +1,6 @@
 <?php
 	session_start();
-	include_once 'header.php';
-	include_once 'config/database.php';
-  	include_once 'classes/customer.php';
-
+	include_once 'includes/header.php';
 ?>
 
 	<?php
@@ -14,7 +11,7 @@
   
   			$customer = new Customer($db);
   			$stmt = $customer->readOneUser();
-  			header("Location: userhome.php");
+  			header("Location: customer/userhome.php");
 		}
 		//page redirects to guesthome if not logged in
 		else {
@@ -23,5 +20,5 @@
 	?>
 
 <?php
-	include_once "footer.php";
+	include_once "includes/footer.php";
 ?>

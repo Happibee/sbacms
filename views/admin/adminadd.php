@@ -1,8 +1,6 @@
 <?php
 	session_start();
 	include_once "adminheader.php";
-	include_once "../classes/employee.php";
-	include_once "../config/database.php";
 
   if(!isset($_SESSION['employeeId'])){
       header('Location: ../employee/employeelogin.php');
@@ -84,7 +82,7 @@ if(isset($_SESSION['employeeId'])){
                 </div>
                 <div class='col-sm-4'>
                   &nbsp
-                  <input type='text' class='form-control' value='Manager' disabled>
+                  <input type='text' class='form-control' name='type' value='Manager' readonly>
                 </div>
                 <div class='col-sm-4'>
                   <!--RIGHT SPACE-->                

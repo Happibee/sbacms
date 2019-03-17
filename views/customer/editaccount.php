@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	include "header.php";
-	include_once "classes/customer.php";
+	include "../includes/tempo/header.php";
+	include_once "../../classes/customer.php";
 
 	if(!isset($_SESSION['custId'])){
     	header('Location: login.php');

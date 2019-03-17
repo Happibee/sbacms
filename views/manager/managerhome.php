@@ -2,9 +2,7 @@
 <?php
   session_start();
   include_once 'managerheader.php';
-  include_once '../config/database.php';
-  include_once '../classes/employee.php';
-  include_once '../classes/service.php';
+  include_once '../../classes/service.php';
 
   if(!isset($_SESSION['employeeId'])){
     header('Location: ../employee/employeelogin.php');
@@ -56,7 +54,7 @@
       extract($row);
         echo "<tbody>
             <tr>
-                <td>".$row['employeeId']."</td>
+                <td>".$row['id']."</td>
                 <td>".$row['firstName']."</td>
                 <td>".$row['lastName']."</td>
                 <td>".$row['userName']."</td>
