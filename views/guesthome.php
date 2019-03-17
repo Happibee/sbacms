@@ -14,33 +14,80 @@
 	  </center>
   </div>
 </div>
-<!--Carousel-controls-indicator-->
-<div class="container">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/img/salon1.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/salon2.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/salon3.jpg" alt="Third slide">
+<br>
+<!--Card-indicator-->
+<div class='container'>
+<div class="card-columns">
+  <div class="card">
+    <img class="card-img-top" src="../assets/img/salon1.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Relax</h5>
+      <p class="card-text">Salon De Bliss has an amazing and relaxing vibe that helps our customers feel comfortable.</p>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  <div class="card p-3 text-right">
+    <blockquote class="blockquote mb-0">
+      <p>Amazing and nothing else!</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Kim Mendoza <cite title="Source Title"> - Alibaba CTO</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="../assets/img/salon2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Unwind</h5>
+      <p class="card-text">Feel free to be free whenever you want to. Visit us and be a queen, because you deserve it.</p>
+    </div>
+  </div>
+  <div class="card bg-secondary text-white text-center p-3">
+    <blockquote class="blockquote mb-0">
+      <p>Salon De Bliss has changed my life. I feel empowered and gorgeous! Thank you Salon De Bliss!</p>
+      <footer class="blockquote-footer">
+        <small><font color='white'>
+          Grail Papat-iw <cite title="Source Title">- Amazon CIO</cite>
+        </small></font>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">We got you!</h5>
+      <p class="card-text">Register now and feel free to avail our services and book online without the need to physically book on our spa</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="../assets/img/sal2.jpg" alt="Card image">
+    <div class="card-body">
+      <h5 class="card-title">Renew</h5>
+      <p class="card-text">Natural and nothing else. Our goal is to provide our customers the best service that they will experience. We want a long term relationship and we believe that the customer is always right!</p>
+      <p class="card-text"><small class="text-muted">SBACMS</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="../assets/img/salon3.jpg" alt="Card image">
+  </div>
+  <div class="card p-1">
+    <blockquote class="blockquote mb-0 card-body">
+      <p>"Salon De Bliss has made me a very beautiful woman. My boyfriend always wants to meet me since I started going to Salon De Bliss"</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Sharmaine Rufino <cite title="Source Title">- Google CEO</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card">
+    <img class="card-img" src="../assets/img/sal3.jpg" alt="Card image">
+    <div class="card-body">
+      <h5 class="card-title">Renew</h5>
+      <p class="card-text">Natural and nothing else. Our goal is to provide our customers the best service that they will experience.</p>
+      <p></p>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -57,13 +104,7 @@
   </div>
   </div>
 <!--Carousel-controls-indicator-->
-<div class="container">
-<div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
-  </ol>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="../assets/img/serv1.jpg" alt="First slide">
@@ -75,15 +116,6 @@
       <img class="d-block w-100" src="../assets/img/serv3.jpg" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 </div>
  <!--Stylists part-->
 </div>
@@ -99,59 +131,34 @@
 </div>
 <!--Carousel-controls-indicator-->
 <div class="container">
-<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../assets/img/sty1.jpg" alt="First slide">
+  <div class="card-group">
+    <div class="card">
+      <img class="card-img-top" src="../assets/img/model1.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Louis Mansanas</h5>
+        <p class="card-text">"I believe, you believe, we all believe. Nothing better than the chemistry that a customer and a stylist makes."</p>
+        <p class="card-text"><small class="text-muted">Award winning stylist</small></p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/sty2.jpg" alt="Second slide">
+    <div class="card">
+      <img class="card-img-top" src="../assets/img/model2.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Loyde Cruz Dela Fonte</h5>
+        <p class="card-text">"This has always been my passion, make people beautiful and proud!"</p>
+        <p class="card-text"><small class="text-muted">Former stylist of Miss Universe Pia Wurtzbach</small></p>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../assets/img/sty3.jpg" alt="Third slide">
+    <div class="card">
+      <img class="card-img-top" src="../assets/img/model3.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Sweety Mcjolly</h5>
+        <p class="card-text">"Beauty has always been a standard in todays society, that is why i want to make people beautiful because it is the only thing that people want now adays."</p>
+        <p class="card-text"><small class="text-muted">Former Model, now a beautician</small></p>
+      </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 </div>
 
-<!--FEEDBACKS-->
-<div class="feed">
-  <div class="container">
-    <h1 class="display-4"><center>Feedback</center></h1>
-    <center>
-      <p class="lead">
-        Feedback from our Customers
-      </p>
-    </center>
-    <div class='container'>
-        &nbsp
-        <center>
-          <div class="col-sm-6">
-              <font size='6'>"Maganda ang Service, friendly ang mga employees :)"</font>
-          </div>
-          <div class="col-sm-6">
-              <font size='4'>Rating: 5/5</font> <br>
-          </div>
-          <div class="col-sm-5">
-              -Jaydee <br>
-          </div>
-        </center>
-    </div>
-  </div>
-</div>
 
 <!--DIV STYLES-->
 <style>
@@ -165,10 +172,6 @@
 		padding: 30px;
 		color: white;
 	}
-  .feed{
-    background-color: #353535;
-    padding: 10px;
-    color: white;
 </style>
 
 <?php

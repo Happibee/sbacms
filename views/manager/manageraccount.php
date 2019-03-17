@@ -9,7 +9,7 @@
   			$db=$database->getConnection();
   
   			$employee = new Employee($db);
-  			$stmt = $employee->readOneEmployee();
+  			$stmt = $employee->readOneAccount();
 		}
 		//page logged in
 		else {
@@ -27,7 +27,7 @@
 			echo "
 			&nbsp 
 			<div class='container'>
-				<center><a href='admineditacc.php' class='btn btn-primary'>Edit Account</a></center>
+				<center><a href='managereditacc.php' class='btn btn-primary'>Edit Account</a></center>
 			</div>
 			&nbsp
 			<div class='container'>
@@ -41,12 +41,12 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <th scope='row'><h2>".$_SESSION['userName']."</h2></th>
-			      <td>".$_SESSION['firstName']."</td>
-			      <td>".$_SESSION['lastName']."</td>
-			      <td>".$_SESSION['emailAdd']."</td>
-			    </tr>
+					<tr>
+						<th scope='row'><h2>".$employee->userName."</h2></th>
+						<td>".$employee->firstName."</td>
+						<td>".$employee->lastName."</td>
+						<td>".$employee->emailAdd."</td>
+					</tr>
 			  </tbody>
 			</table>
 			</div>

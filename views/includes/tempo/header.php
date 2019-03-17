@@ -24,14 +24,25 @@
             <a class='nav-item nav-link' href='http://localhost/sbacms/views/about.php'>ABOUT US</a>
             <a class='nav-item nav-link' href='../contact.php'>CONTACT US</a>
             <a class='nav-item nav-link' href=customer/reservation.php'>SHEDULE NOW</a>
-            <a class='nav-item nav-link' href='review.php'><font color='#ff5ead'>RATE US!</font></a>
+            <a class='nav-item nav-link' href='customer/custreview.php'><font color='#ff5ead'>RATE US!</font></a>
         </div>
         <div class='navbar-nav'>
         </div>
       </div>
-        <a class='nav-item nav-link' href='account.php'>Account</a>
-        <a class='nav-item nav-link' href='custappointment.php'>Appointments</a>
-        <a class='nav-item nav-link' href='record.php'><font color='black'>History</font></a>
+      <div class='btn-group'>
+      <a class='nav-link dropdown-toggle' href='#'' role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        Action
+      </a>
+      <div class='dropdown-menu'>
+        <a class='dropdown-item' href='account.php'>Account</a>
+        <a class='dropdown-item' href='custappointment.php'>Appointments</a>
+        <a class='dropdown-item' href='feedbackcust.php'>Your Feedback</a>
+
+        <div class='dropdown-divider'></div>
+        <a class='dropdown-item' href='record.php'><font color='black'>History</font></a>
+      </div>
+    </div>
+      &nbsp&nbsp
         <a href='../util/logout.php' class='btn btn-danger'>Log Out</a>
       </nav>";
     }
@@ -51,6 +62,7 @@
             <a class='nav-item nav-link' href='about.php'>ABOUT US</a>
             <a class='nav-item nav-link' href='contact.php'>CONTACT US</a>
             <a class='nav-item nav-link' href='../../util/login.php'>SHEDULE NOW</a>
+            <a class='nav-item nav-link' href='feedback.php'>FEEDBACK</a>
         </div>
         <div class='navbar-nav'>
         </div>

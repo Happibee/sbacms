@@ -11,7 +11,7 @@
   			$db=$database->getConnection();
   
   			$employee = new Employee($db);
-  			$stmt = $employee->readOneAdmin();
+  			$stmt = $employee->readOneAccount();
 	}
 ?>
 <div class="employeepart">

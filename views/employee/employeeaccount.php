@@ -9,7 +9,7 @@
 		$db=$database->getConnection();
 
 		$employee = new Employee($db);
-		$stmt = $employee->readOneEmployee();
+		$stmt = $employee->readOneAccount();
 	}
 	//page logged in
 	else {

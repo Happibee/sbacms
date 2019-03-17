@@ -10,6 +10,15 @@
 		public $custId;
 		public $employee_id;
 
+		// new
+		public $appDate;
+		public $apptTme;
+		public $serviceType;
+		public $serviceName;
+		public $price;
+		public $status;
+		// end of new
+
 		public $conn;
 		private $tablename = 'appointment';
 
@@ -19,12 +28,14 @@
 
 		//each account should be included in transaction 
 		function createAppointment(){
-			$query = "INSERT INTO appointment set $serviceName=?, $date=?, $time=?, $employeeName=?";
+			$query = "INSERT INTO appointment set serviceType=?, serviceName=?, appDate=?, appTime=?, custId=?";
 			$stmt = $this->conn->prepare($query);
-			$stmt->bindparam(1, $this->service_name);
-			$stmt->bindparam(2, $this->date);
-			$stmt->bindparam(3, $this->time);
-			$stmt->bindparam(4, $this->employee_name);
+			$stmt->bindparam(1, $this->serviceType);
+			$stmt->bindparam(2, $this->serviceName);
+			$stmt->bindparam(3, $this->appDate);
+			$stmt->bindparam(4, $this->appTime);
+			$stmt->bindparam(5, $_SESSION['custId']);
+
 			if($stmt->execute()){
 				return true;
 			}

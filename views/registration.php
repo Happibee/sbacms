@@ -1,6 +1,14 @@
 <?php
   ob_start();
-	include_once 'includes/header.php';
+  include_once 'includes/header.php';
+  include_once "../classes/employee.php";
+
+  if(isset($_SESSION['custId']) && ($_SESSION['custId'] == $_SESSION['custId'])){
+    header('Location: userhome.php');
+  }
+  elseif(isset($_SESSION['employeeId']) && ($_SESSION['employeeId'] == $_SESSION['employeeId'])){
+    header('Location: employee/employee.php');
+  }
 ?>
 <form method="POST" action="registration.php">
 <div class="">

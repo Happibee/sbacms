@@ -7,7 +7,7 @@
   			$db=$database->getConnection();
   
   			$customer = new Customer($db);
-  			$stmt = $customer->readOneUser();
+  			$stmt = $customer->readOneCustomer();
 	}
 ?>
 <div class="aboutwindow">

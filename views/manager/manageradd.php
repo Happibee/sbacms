@@ -11,22 +11,24 @@
 
 <?php
 if(isset($_SESSION['employeeId'])){
-	if($_SESSION['type'] == 'manager'){
-		$database = new Database();
+	if($_SESSION['type'] == 'Manager'){
+		      $database = new Database();
           $db = $database->getConnection();
 
           $employee = new Employee($db);
 
-          if($_POST){
+          if(isset($_POST['addEmployee'])){
             $employee->firstName = $_POST['firstName'];
             $employee->lastName = $_POST['lastName'];
             $employee->userName = $_POST['userName'];
             $employee->emailAdd = $_POST['emailAdd'];
             $employee->password = $_POST['password'];
+            $employee->contactNo = $_POST['contactNo'];
+            $employee->address = $_POST['address'];
             $employee->type = $_POST['type'];
 
             if ($employee->createEmployee()){
-              echo "Successful";
+              //echo "Successful";
               header("Location: managerhome.php");
             }
             else{
@@ -41,37 +43,41 @@ if(isset($_SESSION['employeeId'])){
           </div>
         </div>
 
-					<form method='POST' action='adminadd.php'>
+					<form method='POST' action='manageradd.php'>
 						<div class='container col-sm-7'>
               <div class='row'>
                 <div class='col-sm-6'>
                   <label>First Name</label>
-                  <input type='text' class='form-control' name='firstName'>
+                  <input type='text' class='form-control' name='firstName' required>
                 </div>
                 <div class='col-sm-6'>
                   <label>Last Name</label>
-                  <input type='text' class='form-control' name='lastName'>
+                  <input type='text' class='form-control' name='lastName' required>
                 
                 </div>
               </div>
               <div class='row'>
                 <div class='col-sm-4'>
                   <label>User Name</label>
-                  <input type='text' class='form-control' name='userName'>
+                  <input type='text' class='form-control' name='userName' required>
                 </div>
                 <div class='col-sm-4'>
                   <label>Email Address</label>
-                  <input type='email' class='form-control' name='emailAdd'>
+                  <input type='email' class='form-control' name='emailAdd' required>
                 </div>
                 <div class='col-sm-4'>
-                  <label>Contact Number</label>
-                  <input type='email' class='form-control' name='contactNumber'>
+                  <label>Password</label>
+                  <input type='password' class='form-control' name='password' required>
                 </div>
               </div>
               <div class='row'>
-                <div class='col-sm-12'>
+                <div class='col-sm-4'>
+                  <label>Contact Number</label>
+                  <input type='text' class='form-control' name='contactNo' required>
+                </div>
+                <div class='col-sm-8'>
                   <label>Address</label>
-                  <input type='email' class='form-control' name='address'>
+                  <input type='text' class='form-control' name='address' required>
                 </div>
               </div>
               <div class='row'>
@@ -80,7 +86,7 @@ if(isset($_SESSION['employeeId'])){
                 </div>
                 <div class='col-sm-4'>
                   &nbsp
-                  <input type='text' class='form-control' value='Employee' disabled>
+                  <input type='text' class='form-control' value='Employee' name = 'type' readonly>
                   </select>
                 </div>
                 <div class='col-sm-4'>
@@ -93,7 +99,7 @@ if(isset($_SESSION['employeeId'])){
                 <div class='col-md-12'>
                   <center>
                     <br>
-                    <button type='submit' class='btn btn-info'>Save</button>
+                    <button type='submit' class='btn btn-info' name='addEmployee'>Add Employee</button>
                     <a href='managerhome.php' class='btn btn-danger'>Cancel</a>
                   </center>
                 </div>

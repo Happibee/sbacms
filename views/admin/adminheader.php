@@ -24,7 +24,11 @@
             <a class='nav-item nav-link' href='adminaccount.php'>ACCOUNT</a>
             <a class='nav-item nav-link' href='adminarchive.php'>ARCHIVE</a>
         </div>
-        <div class='navbar-nav'>
+        
+        <div class='navbar-text' id='message'>
+          Welcome ".$_SESSION['firstName'].", You're an ".$_SESSION['type']."!
+        </div>
+
         </div>
       </div>
           <span class='navbar-text'>
@@ -45,3 +49,10 @@
       <script src="../../assets/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   </head>
   <body>
+
+  <script>
+    //message disappears after 2 seconds
+    setTimeout(function(){
+    document.getElementById('message').style.display = 'none';
+    }, 2000);
+  </script>

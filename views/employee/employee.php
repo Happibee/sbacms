@@ -11,9 +11,9 @@
   			$db=$database->getConnection();
   
   			$employee = new Employee($db);
-  			$stmt = $employee->readOneEmployee();
+  			$stmt = $employee->readOneAccount();
 
-			if($_SESSION['type'] == 'admin'){
+			if($_SESSION['type'] == 'Admin'){
 				//redirects to adminhome if admin
 				header("Location: ../admin/adminhome.php");
 			}
