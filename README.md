@@ -2,7 +2,7 @@
 Salon De Bliss Management System
 
 To Do: (As of 17 March 2019)
-*Finish before defense*
+--*Finish before defense*
 - [ ] Fix broken files due to code integration
 - [ ] Transactions
 - [ ] Reports
@@ -12,6 +12,6 @@ To Do: (As of 17 March 2019)
 - [ ] Merge similar components into one an use for all
 
 Minor To Do:
-*Finish before final defense*
+--*Finish before final defense*
 - [ ] Page Titles
 - [ ] Refer to Lysle's readme file
