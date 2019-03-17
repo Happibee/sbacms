@@ -25,6 +25,7 @@
             <a class='nav-item nav-link' href='managerappointments.php'>APPOINTMENTS</a>
             <a class='nav-item nav-link' href='managerservice.php'>SERVICES</a>
             <a class='nav-item nav-link' href='managerpackage.php'>PACKAGE</a>
+            <a class='nav-item nav-link' href='managerreport.php'>MAKE REPORT</a>
         </div>
         <div class='navbar-nav'>
         </div>

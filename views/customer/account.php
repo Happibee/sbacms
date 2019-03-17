@@ -6,7 +6,8 @@
 			$database = new Database();
   			$db=$database->getConnection();
   
-  			$customer = new Customer($db);
+				$customer = new Customer($db);
+				$customer->readOneCustomer();
 
 			echo "
 			<div class='accdet'>

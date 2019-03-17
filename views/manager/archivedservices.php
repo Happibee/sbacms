@@ -2,8 +2,8 @@
 	session_start();
 	include "managerheader.php";
 	include_once "../../config/database.php";
+	include_once "../../classes/service.php"
 
-	include_once "../../classes/user.php";
 	include_once "../../classes/employee.php";
 ?>
 <div class="employeepart">
@@ -15,29 +15,81 @@
 </div>
 
 <!--TABLE-->
-<div class="container">
-	<div class="col-lg-12">
-		<table class="table table-borderless">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Service Name</th>
-					<th scope="col">Service Description</th>
-					<th scope="col">Price</th>
-				</tr>
-			</thead>
-			<!--TEMPORARY scripts later-->
-			<tbody>
-				<tr>
-					<th scope="row"></th>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<?php
+    $service = new Service($db);
+    $stmt = $service->archivedService();
+?> 
+<div class='container'>
+  <center>
+      <table class='table table-hover table-dark'>
+        <thead>
+          <tr>
+            <th scope='col'>ID Number</th>
+            <th scope='col'>Service Type</th>
+            <th scope='col'>Service Name</th>
+            <th scope='col'>Service Description</th>
+            <th scope='col'>Price</th>
+            <th scope='col'>Average Time</th>
+            <th scope='col'>Action</th>
+          </tr>
+        </thead>
+      <?php
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+        echo "
+        <tbody>
+            <tr>
+              <td>{$serviceId}</td>
+              <td>{$serviceType}</td>
+              <td>{$serviceName}</td>
+              <td>{$serviceDescription}</td>
+              <td>{$price}</td>
+              <td>{$averageTime}</td>
+
+              <td>
+                <a href='serviceedit.php?serviceId={$serviceId}' class='btn btn-secondary'>Edit</a>
+                <input type='button' class='btn btn-danger delete-object text-white' delete-id='{$serviceId}' value='Delete Service'/>
+                <input type='button' class='btn btn-primary archive-object' archive-id='{$serviceId}' value='Restore Service'/>
+              </td>
+            </tr>";
+        }
+        ?>
+        </tbody>
+      </table>
+  </center>
 </div>
+<script>
+//restore
+$(document).on('click', '.archive-object', function(){
+    var serviceId = $(this).attr("archive-id");
+    var q = confirm("Are you sure you want to restore this Service?");
+      if(q == true){
+        $.post('restoreService.php', {
+          serviceId: serviceId
+        }, function(data){
+          location.reload();
+        }).fail(function() {
+          alert("Unable to Restore");
+        });
+      }
+      return false;
+});
+//delete
+$(document).on('click', '.delete-object', function(){
+    var serviceId = $(this).attr("delete-id");
+    var q = confirm("Are you sure you want to permanently delete this Service?");
+      if(q == true){
+        $.post('deleteEmployee.php', {
+          employeeId: employeeId
+        }, function(data){
+          location.reload();
+        }).fail(function() {
+          alert("Unable to Restore");
+        });
+      }
+      return false;
+});
+</script>
 <!--TABLE-->
 <style>
   .employeepart{

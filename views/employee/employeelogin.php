@@ -1,6 +1,10 @@
 <?php
 	session_start();
 	include_once "employeeheader.php";
+
+	if(isset($_SESSION['employeeId'])){
+		header('Location: employee.php');
+	}
 ?>
 
 <div class="fluid">
@@ -12,11 +16,15 @@
     <!--LOGIN AREA-->
     <div class="container">
 		<form class="formlogin" method='post'>
+			<br>
+			<center><img src='../../assets/img/salonlogo2.png' width='140px' height='150px'></center>
+			<br>
 			<div class="form-group">
    				<center>
-					<label for="uname"><b>Username</b></label>
+					<h1 class='display-4'>Employee Login</h1>
+					<label for="uname" class='lead'>Username</label>
     				<input type="text" class="form-control" name="emailAdd" placeholder="Enter Username">
-    				<label for="psw"><b>Password</b></label>
+    				<label for="psw" class='lead'>Password</label>
     				<input type="password" class="form-control" name="password" placeholder="Enter Password">
 				</center>
 			</div>

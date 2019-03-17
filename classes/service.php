@@ -7,6 +7,9 @@
 		public $price;
 		public $average_time;
 
+		public $hs_price;
+		public $archive;
+
 		public $conn;
 		private $tablename = 'service';
 

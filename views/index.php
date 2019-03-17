@@ -10,7 +10,7 @@
   			$db=$database->getConnection();
   
   			$customer = new Customer($db);
-  			$stmt = $customer->readOneUser();
+  			$stmt = $customer->readOneCustomer();
   			header("Location: customer/userhome.php");
 		}
 		//page redirects to guesthome if not logged in
