@@ -9,7 +9,7 @@ To Do: (As of 17 March 2019)
 - [ ] Reports
 
 *Fixes*
-- [ ] Use one Login for all user types
+- [Xs] Use one Login for all user types
 - [ ] Merge similar components into one an use for all
 
 Minor To Do:
