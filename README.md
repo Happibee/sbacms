@@ -1,6 +1,3 @@
-# SBACMS
-Salon De Bliss Management System
-
 To Do: (As of 17 March 2019)
 
 *To Do*
