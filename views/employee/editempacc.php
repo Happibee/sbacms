@@ -2,8 +2,8 @@
 	session_start();
 	include "employeeheader.php";
 
-	if(!isset($_SESSION['employeeId'])){
-    header('Location: employeelogin.php');
+	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Employee"){
+    header('Location: ..util/login.php');
   }
 	$database = new Database();
 	$db = $database->getConnection();

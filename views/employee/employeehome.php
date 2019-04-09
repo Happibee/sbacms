@@ -2,15 +2,14 @@
 <?php
   session_start();
   include_once 'employeeheader.php';
-  include_once '../../classes/user.php';
   include_once "../../classes/appointment.php";
 
-  if(!isset($_SESSION['employeeId'])){
-      header('Location: employeelogin.php');
-  }
+  // if(!isset($_SESSION['employeeId'])){
+  //     header('Location: ../util/login.php');
+  // }
 
   $appointment = new Appointment($db);
-  $appointment->employee_id = $_SESSION['employeeId'];
+  $appointment->employee_id = $_SESSION['username'];
   $appointment->status = 'Accepted';
   $appointments = $appointment->getEmployeeAppointments();
 ?>

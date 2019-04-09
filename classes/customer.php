@@ -78,36 +78,7 @@
 			return false;
 		}
 	}
-	
-	function login(){
-		$query = "SELECT * FROM " .$this->tablename. " WHERE userName = ? OR emailAdd = ? AND password = ?";
-		$stmt = $this->conn->prepare($query);
 		
-		$stmt->bindParam(1, $this->emailAdd);
-		$stmt->bindParam(2, $this->userName);
-		$stmt->bindParam(3, $this->password);
-		
-		$stmt->execute();
-		
-		$row=$stmt->fetch(PDO::FETCH_ASSOC);
-		
-		$num = $stmt->rowCount();
-		if($num > 0){
-			session_start();
-			//data from DB to display on user page from login function
-			$_SESSION['custId'] = $row['id'];
-			$_SESSION['firstName'] = $row['firstName'];
-			$_SESSION['lastName'] = $row['lastName'];
-			$_SESSION['userName'] = $row['userName'];
-			$_SESSION['emailAdd'] = $row['emailAdd'];
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-
-	
 	function logout(){
 		session_destroy();
 		unset($_SESSION['custId']);

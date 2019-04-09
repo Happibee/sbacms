@@ -10,8 +10,8 @@
 	
 
 
-	if(!isset($_SESSION['custId'])){
-  		header("Location: login.php");
+	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Customer"){
+  		header("Location: ../util/login.php");
   	}
   	
 

@@ -5,8 +5,8 @@
 	include_once "../../classes/appointment.php";
 	include_once "employeeheader.php";
 	
-	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../employee/employeelogin.php');
+	if(!isset($_SESSION['employeeId']) && !isset($_SESSION['type']) == "Employee"){
+    	header('Location: ../util/login.php');
 	}
 
 	$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Missing ID');
@@ -16,14 +16,14 @@
 	
 	$appointment->getOneAppointment();
 
-	if(isset($_POST['update'])){
+	if (isset($_POST['update'])) {
 		$appointment->date = $_POST['date'];
 		$appointment->time = $_POST['time'];
 			
-		if($appointment->rescheduleAppointment()){
+		if ($appointment->rescheduleAppointment()) {
 			header("Location: employeehome.php");
 		}
-		else{
+		else {
 			echo "Failed to reschedule";
 		}
 	}

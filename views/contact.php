@@ -24,7 +24,7 @@
 	</div>
 
   <?php
-    if(isset($_SESSION['custId'])){
+    if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer"){
       $database = new Database();
         $db=$database->getConnection();
   

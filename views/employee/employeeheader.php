@@ -5,7 +5,7 @@
   $database = new Database();
         $db=$database->getConnection();
 
-  if(isset($_SESSION['employeeId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Employee"){
         $employee = new Employee($db);
       echo "
       <nav class='navbar navbar-expand-lg navbar-light bg-light'>
@@ -26,7 +26,7 @@
         </div>
       </div>
           <span class='navbar-text'>
-          Welcome ".$_SESSION['firstName'].", You're an ".$_SESSION['type']."!
+          Welcome ".$_SESSION['firstname'].", You're an ".$_SESSION['type']."!
           </span>
           &nbsp
           <a href='employeelogout.php' class='btn btn-danger'>Log Out</a>

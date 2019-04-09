@@ -4,7 +4,7 @@
 	include_once '../../config/database.php';
   include_once '../../classes/employee.php';
 
-	if(isset($_SESSION['employeeId'])){
+	if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Employee"){
 		$database = new Database();
 		$db=$database->getConnection();
 
@@ -13,7 +13,7 @@
 	}
 	//page logged in
 	else {
-		header("Location: employeelogin.php");
+		header("Location: ../util/login.php");
 	}
 ?>
 <div class="mngr">
@@ -44,10 +44,10 @@
 			  </thead>
 			  <tbody>
 			    <tr>
-			      <th scope='row'><h2>".$_SESSION['userName']."</h2></th>
-			      <td>".$_SESSION['firstName']."</td>
-			      <td>".$_SESSION['lastName']."</td>
-			      <td>".$_SESSION['emailAdd']."</td>
+			      <th scope='row'><h2>".$_SESSION['username']."</h2></th>
+			      <td>".$_SESSION['firstname']."</td>
+			      <td>".$_SESSION['lastname']."</td>
+			      <td>".$_SESSION['email']."</td>
 			      <td>1234566890</td>
 			      <td>Padre Burgos Street, Baguio City</td>
 			      <td><a href='editempacc.php' class='btn btn-primary'>Edit Account</a></td>

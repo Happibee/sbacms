@@ -3,7 +3,7 @@
   include_once '../../classes/employee.php';
 
 
-  if(isset($_SESSION['employeeId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Admin"){
         $database = new Database();
         $db=$database->getConnection();
   
@@ -23,17 +23,15 @@
             <span class='sr-only'>(current)</span></a>
             <a class='nav-item nav-link' href='adminaccount.php'>ACCOUNT</a>
             <a class='nav-item nav-link' href='adminarchive.php'>ARCHIVE</a>
+            <a class='nav-item nav-link' href='accountreq.php'>ACCOUNT REQUESTS</a>
         </div>
         
         <div class='navbar-text' id='message'>
-          Welcome ".$_SESSION['firstName'].", You're an ".$_SESSION['type']."!
+          Welcome ".$_SESSION['firstname'].", You're an ".$_SESSION['type']."!
         </div>
 
         </div>
       </div>
-          <span class='navbar-text'>
-            Welcome ".$_SESSION['firstName'].", You're an ".$_SESSION['type']."!
-          </span>
           &nbsp
           <a href='adminlogout.php' class='btn btn-danger'>Log Out</a>
       </nav>";

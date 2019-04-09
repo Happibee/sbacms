@@ -17,6 +17,7 @@
 		public $serviceName;
 		public $price;
 		public $status;
+		public $appId;
 		// end of new
 
 		public $conn;
@@ -28,13 +29,13 @@
 
 		//each account should be included in transaction 
 		function createAppointment(){
-			$query = "INSERT INTO appointment set serviceType=?, serviceName=?, appDate=?, appTime=?, custId=?";
+			$query = "INSERT INTO appointment set appTime=?, custId=?";
 			$stmt = $this->conn->prepare($query);
-			$stmt->bindparam(1, $this->serviceType);
-			$stmt->bindparam(2, $this->serviceName);
-			$stmt->bindparam(3, $this->appDate);
-			$stmt->bindparam(4, $this->appTime);
-			$stmt->bindparam(5, $_SESSION['custId']);
+			// $stmt->bindparam(1, $this->serviceType);
+			// $stmt->bindparam(2, $this->serviceName);
+			// $stmt->bindparam(3, $this->appDate);
+			$stmt->bindparam(1, $this->appTime);
+			$stmt->bindparam(2, $_SESSION['username']);
 
 			if($stmt->execute()){
 				return true;
@@ -45,7 +46,7 @@
 		}
 
 		function getEmployeeAppointments(){
-			$query = "SELECT appointment.*, service.service_name, service.price, customer.firstName AS c_fname, customer.lastName AS c_lname, employee.firstName AS e_fname, employee.lastName AS e_lname FROM `appointment` INNER JOIN `service` ON appointment.service_id = service.id INNER JOIN `customer` ON appointment.customer_id = customer.id INNER JOIN `employee` ON appointment.employee_id = employee.id WHERE employee.id = ? AND appointment.status = ? ORDER BY appointment.date DESC";
+			$query = "SELECT appointment.*, c.first_name AS c_fname, c.last_name AS c_lname, e.first_name AS e_fname, e.last_name AS e_lname, service.service_name FROM `appointment` INNER JOIN user_info c ON appointment.customer = c.username INNER JOIN user_info e ON appointment.employee = e.username INNER JOIN service ON appointment.service_id = service.id  WHERE e.username = ? AND appointment.status = ? ORDER BY appointment.date DESC";
 			$stmt = $this->conn->prepare($query);
 			$stmt->bindparam(1, $this->employee_id);
 			$stmt->bindparam(2, $this->status);
@@ -54,7 +55,7 @@
 		}
 
 		function getOneAppointment(){
-			$query = "SELECT appointment.*, service.service_name, service.price, customer.firstName AS c_fname, customer.lastName AS c_lname, employee.firstName AS e_fname, employee.lastName AS e_lname FROM `appointment` INNER JOIN `service` ON appointment.service_id = service.id INNER JOIN `customer` ON appointment.customer_id = customer.id INNER JOIN `employee` ON appointment.employee_id = employee.id WHERE appointment.id = ?";
+			$query = "SELECT appointment.*, c.first_name AS c_fname, c.last_name AS c_lname, e.first_name AS e_fname, e.last_name AS e_lname, service.service_name FROM `appointment` INNER JOIN user_info c ON appointment.customer = c.username INNER JOIN user_info e ON appointment.employee = e.username INNER JOIN service ON appointment.service_id = service.id WHERE appointment.id = ?";
 			$stmt = $this->conn->prepare($query);
 			$stmt->bindparam(1, $this->id);
 			$stmt->execute();
@@ -89,10 +90,11 @@
 			$stmt->bindparam(1, $this->date);
 			$stmt->bindparam(2, $this->time);
 			$stmt->bindparam(3, $this->id);
-			if($stmt->execute()){
+			
+			if ($stmt->execute()) {
 				return true;
 			}
-			else{
+			else {
 				return false;
 			}
 		}

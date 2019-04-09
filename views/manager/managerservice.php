@@ -4,8 +4,8 @@
   include_once '../../classes/service.php';
   include_once '../../classes/serviceType.php';
 
-	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../employee/employeelogin.php');
+	if(!isset($_SESSION['username'])){
+    	header('Location: ../util/login.php');
   	}
 
   	$database = new Database();

@@ -2,12 +2,12 @@
 	session_start();
 	include_once 'managerheader.php';
 
-	if(!isset($_SESSION['employeeId'])){
-		header('Location: ../employee/employeelogin.php');
+	if(!isset($_SESSION['username']) && isset($_SESSION['type']) == "Manager"){
+		header('Location: ../util/login.php');
 	}
 	//if the user is not a manager redirects to employee home
 	if(isset($_SESSION['type']) && !($_SESSION['type'] == 'Manager')){
-		header('Location: ../employee/employeehome.php');
+		header('Location: ../util/login.php');
 	}
 ?>
 &nbsp

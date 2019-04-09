@@ -1,14 +1,16 @@
 <!--HOME PAGE FOR GUESTS-->
 <?php
   session_start();
+  $page_title = "Home";
+  
   include_once 'managerheader.php';
   include_once '../../classes/service.php';
 
-  if(!isset($_SESSION['employeeId'])){
-    header('Location: ../employee/employeelogin.php');
-  }
+  // if(!isset($_SESSION['employeeId'])){
+  //   header('Location: ../util/login.php.php');
+  // }
 
-  if(isset($_SESSION['employeeId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Manager"){
     $database = new Database();
     $db=$database->getConnection();
 
@@ -19,18 +21,44 @@
 <div class="employeepart">
   <div class="container">
     <center>
-      <h1 class="display-4">Registered Employee List</h1>
+      <h1 class="display-4">Account Information</h1>
     </center>
   </div>
 </div>
+</div>
+</div>
 &nbsp
-<center>
-  <a href='manageradd.php' class='btn btn-success'>Add Employee</a>
-</center>
-&nbsp
-<div class="container">
+<div class='container'>
   <center>
-    <h1 class='display-4'>Employee Account</h1>
+  <div class='row'>
+    <div class='col-sm-6'>
+      <?php
+      $employee = new Employee($db);
+      $stmt = $employee->readPendEmp();
+      echo "
+      <div class='card text-white bg-primary' style='width: 18rem;'>
+        <div class='card-body'>
+        <h3 class='card-title'><center>Pending Employee Accounts:</center></h5>
+        <center><p class='card-text display-4'>".($stmt->rowCount())."</p></center>&nbsp
+          <center><a href='accountpend.php' class='btn btn-primary'>Check</a></center>
+        </div>
+      </div>";
+      ?>
+    </div>
+    <div class='col-sm-6'>
+      <?php
+      $stmt = $employee->readDeclinedEmp();
+      echo "
+      <div class='card text-white bg-danger' style='width: 18rem;'>
+        <div class='card-body'>
+        <h3 class='card-title'><center>Declined Employee Accounts:</center></h5>
+        <center><p class='card-text display-4'>".($stmt->rowCount())."</p></center>&nbsp
+          <center><a href='accountdec.php' class='btn btn-danger'>Check</a></center>
+        </div>
+      </div>";
+      ?>
+    </div>
+  </div>
   </center>
 </div>
 &nbsp

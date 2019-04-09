@@ -20,6 +20,10 @@
 		    padding-left: 10px;
 		}
 	</style>
+	
+	<?php 
+		// include_once "../feedback.php";
+	?>
 </html>
 
 <script type="text/javascript" src="../../assets/js/scripts.js"></script>

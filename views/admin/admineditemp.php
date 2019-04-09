@@ -2,7 +2,7 @@
 	session_start();
 	include "adminheader.php";
 
-	if(!isset($_SESSION['employeeId'])){
+	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Admin"){
     header('Location: ../employee/employee.php');
   }
 ?>

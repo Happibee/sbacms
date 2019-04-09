@@ -5,8 +5,8 @@
   include_once '../classes/employee.php';
   include_once '../classes/service.php';
 
-  if(!isset($_SESSION['employeeId'])){
-    header('Location: ../employee/employeelogin.php');
+  if(!isset($_SESSION['username'])){
+    header('Location: ../util/login.php');
   }
 ?>
 <div class="pck">

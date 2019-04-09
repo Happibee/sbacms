@@ -65,21 +65,21 @@
 		}
 
 		//disables button if there is 1 or more managers
-		function disableAddManager(){
-			$query = "SELECT * FROM employee where type = 'Manager' AND archive = 0";
-			$stmt = $this->conn->prepare($query);
-			$stmt->execute();
+		// function disableAddManager(){
+		// 	$query = "SELECT * FROM employee where type = 'Manager' AND archive = 0";
+		// 	$stmt = $this->conn->prepare($query);
+		// 	$stmt->execute();
 
-			$row=$stmt->fetch(PDO::FETCH_ASSOC);
+		// 	$row=$stmt->fetch(PDO::FETCH_ASSOC);
 
-			$num = $stmt->rowCount();
-			if($num > 0){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
+		// 	$num = $stmt->rowCount();
+		// 	if($num > 0){
+		// 		return true;
+		// 	}
+		// 	else{
+		// 		return false;
+		// 	}
+		// }
 		//this function shows data of manager
 		function adminManagerdata(){
 			$query = "SELECT * FROM employee WHERE type = 'Manager' AND archive = 0";
@@ -241,7 +241,6 @@
 		}
 		//creates employee or a manager depending on the user.
 		function createEmployee(){
-			
 			$query = "INSERT INTO employee set firstName=?, lastName=?, userName=?, emailAdd=?, password=?, contactNo=?, address=?, type=?";
 			$stmt = $this->conn->prepare($query);
 			$stmt->bindparam(1,$this->firstName);
@@ -259,13 +258,128 @@
 				return false;
 			}
 		}
-		
-		function login(){
-			$query = "SELECT * FROM " .$this->tablename. " WHERE emailAdd = ? AND password = ?";
+		//detects if an admin has been created, if none, proceed to create the first admin or sadmin
+		function existingAdmin(){
+			$query = "SELECT * FROM employee WHERE type=Admin";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bindparam(1,$this->type);
+			
+			$stmt->execute();
+
+			$row=$stmt->fetch(PDO::FETCH_ASSOC);
+
+			$num = $stmt->rowCount();
+			if($num > 0){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		//creates the first admin, first admin don't need to be approved by someone.
+		function createAdmin(){
+			$query = "INSERT INTO employee set firstName=?, lastName=?, userName=?, emailAdd=?, password=?, contactNo=?, address=?, type=?, approved=1";
+			$stmt = $this->conn->prepare($query);
+			$stmt->bindparam(1,$this->firstName);
+			$stmt->bindparam(2,$this->lastName);
+			$stmt->bindparam(3,$this->userName);
+			$stmt->bindparam(4,$this->emailAdd);
+			$stmt->bindparam(5,$this->password);
+			$stmt->bindparam(6,$this->contactNo);
+			$stmt->bindparam(7,$this->address);
+			$stmt->bindparam(8,$this->type);
+			$stmt->bindparam(9,$this->approved);
+			if($stmt->execute()){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		//approves employee accounts.
+		function approveEmp(){
+			$query = "UPDATE employee set approved=1 WHERE employeeId=?";
+			$stmt = $this->conn->prepare($query);
+			
+			$stmt->bindparam(1,$this->employeeId);
+
+			if($stmt->execute())
+				return true;
+			else
+				return false; 
+		}
+		function declineEmp(){
+			$query = "UPDATE employee set approved=2 WHERE employeeId=?";
+			$stmt = $this->conn->prepare($query);
+			
+			$stmt->bindparam(1,$this->employeeId);
+
+			if($stmt->execute())
+				return true;
+			else
+				return false; 
+		}
+		/**************************************************************************/
+		//reads pending accounts of admins
+		function readPendAdmin(){
+			$query = "SELECT * FROM employee WHERE type='Admin' AND approved=0";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		//reads approved accounts
+		function readApprovedAdmin(){
+			$query = "SELECT * FROM employee WHERE type='Admin' AND approved=1";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		//reads declined accounts
+		function readDeclinedAdmin(){
+			$query = "SELECT * FROM employee WHERE type='Admin' AND approved=2";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		/***************************************************************************/
+		//reads pending accounts of managers
+		function readPendMan(){
+			$query = "SELECT * FROM employee WHERE type='Manager' AND approved=0";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		//reads declined accounts
+		function readDeclinedMan(){
+			$query = "SELECT * FROM employee WHERE type='Manager' AND approved=2";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		/*************************************************************************/
+		//reads pending accounts of employees
+		function readPendEmp(){
+			$query = "SELECT * FROM employee WHERE type='Employee' AND approved=0";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		//reads declined accounts of employees
+		function readDeclinedEmp(){
+			$query = "SELECT * FROM employee WHERE type='Employee' AND approved=2";
+			$stmt = $this->conn->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+		//login function, uses either email or username
+		function emplogin(){
+			$query = "SELECT * FROM " .$this->tablename. " WHERE emailAdd = ? OR userName = ? AND password = ?";
 			$stmt = $this->conn->prepare($query);
 			
 			$stmt->bindParam(1, $this->emailAdd);
-			$stmt->bindParam(2, $this->password);
+			$stmt->bindParam(2, $this->userName);
+			$stmt->bindParam(3, $this->password);
 			
 			$stmt->execute();
 			
@@ -280,17 +394,18 @@
 				$_SESSION['lastName'] = $row['lastName'];
 				$_SESSION['userName'] = $row['userName'];
 				$_SESSION['emailAdd'] = $row['emailAdd'];
+				// $_SESSION['password'] = $row['password'];
 				$_SESSION['address'] = $row['address'];
 				$_SESSION['contactNo'] = $row['contactNo'];
 				$_SESSION['type'] = $row['type'];
+				$_SESSION['archive'] = $row['archive'];
+				$_SESSION['approved'] = $row['approved'];
 				return true;
 			}
 			else{
 				return false;
 			}
 		}
-
-		
 		function logout(){
 			session_destroy();
 			unset($_SESSION['employeeId']);

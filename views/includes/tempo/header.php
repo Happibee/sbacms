@@ -3,7 +3,7 @@
   include_once '../../classes/customer.php';
 
 
-  if(isset($_SESSION['custId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer"){
         $database = new Database();
         $db=$database->getConnection();
   
@@ -11,7 +11,7 @@
         $customer = new Customer($db);
       echo "
       <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <a class='nav-item nav-link active' href='index.php'>
+      <a class='nav-item nav-link active' href='../../../index.php'>
           <img src='../../assets/img/navbarlogo.png' width='200' height='35' class='d-inline-block align-top'>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
@@ -19,12 +19,12 @@
         </button>
       <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <div class='navbar-nav'>
-            <a class='nav-item nav-link active' href='../index.php'>HOME<span class='sr-only'>(current)</span></a>
+            <a class='nav-item nav-link active' href='../../../index.php'>HOME<span class='sr-only'>(current)</span></a>
             <a class='nav-item nav-link' href='../services.php'>SERVICES</a>
             <a class='nav-item nav-link' href='http://localhost/sbacms/views/about.php'>ABOUT US</a>
             <a class='nav-item nav-link' href='../contact.php'>CONTACT US</a>
-            <a class='nav-item nav-link' href=customer/reservation.php'>SHEDULE NOW</a>
-            <a class='nav-item nav-link' href='customer/custreview.php'><font color='#ff5ead'>RATE US!</font></a>
+            <a class='nav-item nav-link' href='../reservation.php'>SHEDULE NOW</a>
+            <a class='nav-item nav-link' href='../custreview.php'><font color='#ff5ead'>RATE US!</font></a>
         </div>
         <div class='navbar-nav'>
         </div>
@@ -49,7 +49,7 @@
     else {
       echo "
       <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <a class='nav-item nav-link active' href='index.php'>
+      <a class='nav-item nav-link active' href='../../../index.php'>
           <img src='../../assets/img/navbarlogo.png' width='200' height='35' class='d-inline-block align-top'>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
@@ -57,12 +57,12 @@
         </button>
       <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <div class='navbar-nav'>
-            <a class='nav-item nav-link' href='index.php'>HOME</a>
-            <a class='nav-item nav-link' href='services.php'>SERVICES</a>
-            <a class='nav-item nav-link' href='about.php'>ABOUT US</a>
-            <a class='nav-item nav-link' href='contact.php'>CONTACT US</a>
-            <a class='nav-item nav-link' href='../../util/login.php'>SHEDULE NOW</a>
-            <a class='nav-item nav-link' href='feedback.php'>FEEDBACK</a>
+            <a class='nav-item nav-link' href='../../../index.php'>HOME</a>
+            <a class='nav-item nav-link' href='../services.php'>SERVICES</a>
+            <a class='nav-item nav-link' href='../about.php'>ABOUT US</a>
+            <a class='nav-item nav-link' href='../contact.php'>CONTACT US</a>
+            <a class='nav-item nav-link' href='../util/login.php'>SHEDULE NOW</a>
+            <a class='nav-item nav-link' href='../feedback.php'>FEEDBACK</a>
         </div>
         <div class='navbar-nav'>
         </div>
@@ -71,7 +71,7 @@
           
       echo "
       <a href='../util/login.php' class='btn btn-info'>Login</a>
-      <a href='registration.php' class='btn btn-outline-info'>Register</a>
+      <a href='../registration.php' class='btn btn-outline-info'>Register</a>
       </div>
       </nav>";
     }

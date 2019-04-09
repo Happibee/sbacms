@@ -1,10 +1,7 @@
 <?php
 	session_start();
 	include "adminheader.php";
-	include_once "../config/database.php";
-
-	include_once "../classes/customer.php";
-	include_once "../classes/employee.php";
+	include_once "../../classes/customer.php";
 ?>
 <div class="employeepart">
 	<div class="container">

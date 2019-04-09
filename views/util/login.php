@@ -1,24 +1,82 @@
 <?php
-	ob_start();
+	$pageTitle = "Log In";
+	echo "<title>" . $pageTitle . "</title>";
+	
+	include_once "../includes/tempo/header.php";
+	include_once "../../classes/user.php";
+	
 	session_start();
-	include_once "includes/header.php";
+	// if (isset($_SESSION['username']) && isset($_SESSION['type'] == "Admin")){
+	// 	header('Location: ../admin/adminhome.php');
+	// }
+	// else if (isset($_SESSION['username']) && isset($_SESSION['type']) == "Manager") {
+	// 	header('Location: ../manager/managerhome.php');
+	// }
+	// else if (isset($_SESSION['username']) && isset($_SESSION['type']) == "Employee") {
+	// 	header('Location: ../employee/employeehome.php');
+	// }
+	// else if (isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer") {
+	// 	header('Location: ../customer/userhome.php');
+	// }
 	
-	if(isset($_SESSION['custId'])){
-		header('Location: index.php');
+
+	if ($_POST){
+		$database = new Database();
+		$db = $database->getConnection();
+
+		$user = new User($db);
+
+		$user->username = $_POST['user-cred'];
+		$user->password = $_POST['password'];
+
+		if ($user->login()){
+			if($_SESSION['type'] == "Admin"){
+				header("Location: ../admin/adminhome.php");
+			}	
+			else if($_SESSION['type'] == "Manager"){
+				header("Location: ../manager/managerhome.php");
+			}
+			else if($_SESSION['type'] == "Employee"){
+				header("Location: ../employee/employeehome.php");
+			}
+			else if($_SESSION['type'] == "Customer"){
+				header("Location: ../customer/userhome.php");
+			}
+		} elseif(empty($_POST['user-cred']) || empty($_POST['password'])){
+			echo '
+			<center>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				  User Name or Password is left blank!
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			</center>';
+		}
+		
+		else {
+			echo '
+				<center>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					  Incorrect UserName or Password.
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+				</center>
+				';
+		}
 	}
-	
 ?>
-<html>
 <div class="fluid">
   <div class='row'>
   	<div class='container'>
-  		&nbsp
-  		<h1 class='display-4' align='center'>Customer Login</h1>
+  		<h1 class='mt-3' align='center'>Login</h1>
   	</div>
   </div>
+  
   <div class="row">
     <div class="left col-sm-4">
-    	<!--LEFT EMPTY SPACE-->
     </div>
     <div class="center col-sm-4">
     <!--LOGIN AREA-->
@@ -27,7 +85,7 @@
 			<div class="form-group">
    				<center>
 					<label for="uname" class='lead'><b>Username</b></label>
-    				<input type="text" class="form-control" name="emailAdd" placeholder="Enter Username" required>
+    				<input type="text" class="form-control" name="user-cred" placeholder="Enter Username" required>
     				<label for="psw" class='lead'><b>Password</b></label>
     				<input type="password" class="form-control" name="password" placeholder="Enter Password" required>
 				</center>
@@ -44,37 +102,12 @@
 			</div>
 
 		<div class="form-group">
-		<!--php cooode-->
-		<?php
-
-		if($_POST){
-			$database = new Database();
-			$db = $database->getConnection();
-	
-			$customer = new Customer($db);
-	
-			$customer->emailAdd = $_POST['emailAdd'];
-			$customer->userName = $_POST['emailAdd'];
-			$customer->password = $_POST['password'];
-	
-			if($customer->login()){
-				header("Location: userhome.php");
-			}
-
-			else{
-				echo "<center>Incorrect Email or Password</center>";
-			}
-		}
-		?>
-
-		</div>
-			<center><a href="employee/employeelogin.php" class="btn btn-dark">Are you an Employee?</a></center>
+		
 		</form> 
 	</div>
 
     </div>
     <div class="right col-sm-4">
-    	<!--RIGHT EMPTY SPACE-->
     </div>
   </div>
 </div>

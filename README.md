@@ -3,17 +3,29 @@ Salon De Bliss Management System
 
 To Do: (As of 17 March 2019)
 
-*Finish before defense*
-- [ ] Fix broken files due to code integration
+*To Do*
+@ Members who do documentation, please update this file and add all missing functionalities.
+- [ ] File Maintenance
+    - [ ] Promo
+
+- [ ] Utilities
+    - [ ] Edit Account Details
+    - [ ] Change Password
+
 - [ ] Transactions
+    - [ ] Create Appointment
+
 - [ ] Reports
 
 *Fixes*
-- [ ] Use one Login for all user types
-- [ ] Merge similar components into one an use for all
+- [X] Fix broken files due to code integration
+- [X] Use one Login for all user types
+- [ ] Use one Logout for all user types
+- [ ] Merge similar components into one and use for all
+    - [ ] Header
+    - [ ] Navigation
+    - [ ] Account/ View Profile
 
-Minor To Do:
-
-*Finish before final defense*
+*Minor To Do:*
 - [ ] Page Titles
 - [ ] Refer to Lysle's readme file

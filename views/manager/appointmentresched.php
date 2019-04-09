@@ -1,11 +1,9 @@
 <?php
 	session_start();
-	include_once "../config/database.php";
-	include_once "../classes/user.php";
 	include_once "managerheader.php";
 	
-	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../employee/employeelogin.php');
+	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Manager"){
+    	header('Location: ../util/login.php');
   	}
 ?>
 <div class="res">
