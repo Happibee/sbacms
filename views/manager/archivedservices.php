@@ -4,7 +4,6 @@
 	include_once "../../config/database.php";
 	include_once "../../classes/service.php"
 
-	include_once "../../classes/employee.php";
 ?>
 <div class="employeepart">
 	<div class="container">
@@ -39,12 +38,12 @@
         echo "
         <tbody>
             <tr>
-              <td>{$serviceId}</td>
-              <td>{$serviceType}</td>
-              <td>{$serviceName}</td>
-              <td>{$serviceDescription}</td>
+              <td>{$id}</td>
+              <td>{$type}</td>
+              <td>{$name}</td>
+              <td>{$description}</td>
               <td>{$price}</td>
-              <td>{$averageTime}</td>
+              <td>{$average_time}</td>
 
               <td>
                 <a href='serviceedit.php?serviceId={$serviceId}' class='btn btn-secondary'>Edit</a>

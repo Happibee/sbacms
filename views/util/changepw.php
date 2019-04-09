@@ -5,7 +5,7 @@
 	include_once '../../classes/customer.php';
 	include_once '../../config/database.php';
 
-	if(!isset($_SESSION['custId'])){
+	if(!isset($_SESSION['username'])){
 	  header("Location: login.php");
 	}
 

@@ -11,7 +11,7 @@
     		Salon De Bliss provides a variety of services offered for our valued customers.
     	</p>
     	<?php
-    		if(isset($_SESSION['custId'], $_SESSION['firstName'], $_SESSION['lastName'])){
+    		if(isset($_SESSION['username'], $_SESSION['firstName'], $_SESSION['lastName'])){
 			   $database = new Database();
   			 $db=$database->getConnection();
   
@@ -109,7 +109,6 @@
 </table>
 </div>
 
-
 <!--THIRD ROW-->
 <div class="card text-center">
   <div class="card-header">
@@ -122,7 +121,6 @@
     <input type='button' class='btn btn-secondary viewbtn' data-toggle='modal' data-target='#viewModal' value='View Packages'>
   </div>
 </div>
-
 
 <!--MODAL-->
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">

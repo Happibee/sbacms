@@ -3,7 +3,7 @@
   include_once '../../classes/employee.php';
 
 
-  if(isset($_SESSION['employeeId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Manager"){
         $database = new Database();
         $db=$database->getConnection();
   
@@ -35,9 +35,9 @@
             <a href='managerlogout.php' class='btn btn-danger'>Log Out</a>
       </nav>";
     }
-    else {
-      Header("Location: ../employee/employeelogin.php");
-    }
+    // else {
+    //   Header("Location: ../util/login.php");
+    // }
 ?>
 <html>
   <head>
@@ -47,5 +47,13 @@
       <script src="../../assets/jquery/3.3.1/jquery-3.3.1.min.js"></script>
       <script src="../../assets/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
       <script src="../../assets/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+      <!-- DATE PICKER JAVASCRIPT and CSS -->
+      <script type="text/javascript" src="../../assets/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+      <link rel="stylesheet" href="../../assets/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+      <!--Datatables-->
+      <link rel="stylesheet" type="text/css" href="../../assets/dataTables/datatables.css" />
+      <script type="text/javascript" src="../../assets/dataTables/datatables.js"></script>
   </head>
   <body>

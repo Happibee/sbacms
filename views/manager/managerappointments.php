@@ -4,8 +4,8 @@
 	include_once "../../classes/employee.php";
 	include_once "managerheader.php";
 	
-	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../../employee/employeelogin.php');
+	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Manager"){
+    	header('Location: ../util/login.php');
   	}
 ?>
 
@@ -37,7 +37,7 @@
 				<td>John</td>
 				<td>Pending</td>
 				<td>
-					<a href="appointmentresched.php" class="btn btn-danger">Reschedule</a>
+					<a href="appointmentedit.php" class="btn btn-danger">Reschedule</a>
 				</td>
 			</tr>
 		</tbody>

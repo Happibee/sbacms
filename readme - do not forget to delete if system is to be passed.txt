@@ -1,11 +1,10 @@
 For developers/ team members of SBACMS,
-Here are some notes on what I changed in the system and comments/best practices you MAY use not only in making SBACMS, but in future development as well :). To see specifics regarding lines of code I modified/added, check github repository under Kendall :)
+Here are some notes on what I changed in the system and comments/best practices you MAY use not only in making SBACMS, but in future development as well :). To see specifics regarding lines of code I modified/added, check commits :)
 
 Fixes/Major Changes Made in SBACMS:
     Fixes:
         1. Directory Structure Change - organized the files and resources.
-        2. Fixed Registration Page.
-        3. Session bugs.
+        2. Session bugs.
 
     New Functions:
         Employee
@@ -16,6 +15,11 @@ Fixes/Major Changes Made in SBACMS:
         Manager
         1. View Services
         2. Create, Update, Delete, Archive Services
+    
+    Other:
+        1. Made login page one for all users.
+        2. Password encryption during registration.
+        3. Registration
 
     Database Changes (Update database schema on your document)
         1. Appointment Table
@@ -24,13 +28,19 @@ Fixes/Major Changes Made in SBACMS:
         - changed status field to string since the appointment status' possible values may be: 1. Pending 2. Accepted/Whatever term you use 3. Complete/Done/Whtvr.
 
         2. Service Table
-        - added new field - ISACTIVE, for archiving function purposes.
+        - added new field - ARCHIVE, for archiving function purposes.
 
         3. Added service_type Table
         - for database normalization purposes.
 
         4. Changed database naming conventions to conform to some database management best practices.
         i.e. changed firstName to first_name 
+
+        5. Separated User Account (username, email, pass, etc.) from user info.
+        WHY? Consider that most of the salon's clients would be walk-in, which means they do not have account credentials but the salon will record the customer's name and other info when they schedule the appointments.
+        **All customers can have user info but not all need to have user credentials.
+        **user_info table can have rows w/ no username (for walk-in clients)
+        ***PLEASE LET ME KNOW WHAT YOU THINK OF THIS ITEM.
 
 ----
 
@@ -41,7 +51,7 @@ Noticed that some file calls should only be made once, but they were unnecessari
 i.e. header.php calls database.php and it is imported in guesthome.php (and other files), THERE IS NO NEED TO CALL database.php AGAIN IN guesthome.php SINCE YOU ARE IMPORTING header.php in guesthome.php
 ** Take advantage of the reusability of your resources
 
-2. Javascript files are places in header file.
+2. Javascript files are placed in header file.
 * PUT JAVASCRIPT FILES IN THE FOOTER for the site to load faster. It may not be noticeable when you're running in local but consider the speed of loading the resources once the site is deployed.
 
 3. There are a few stray files that are not even used.
@@ -49,13 +59,14 @@ i.e. header.php calls database.php and it is imported in guesthome.php (and othe
 ** Make one folder for all test files (i.e. Made a 'playground' folder for test/sample files).
 
 4. Organize and collate styles.
-Noticed that your style rules are "makalat". Some are declared in the bottom of the page of at the top.
+Noticed that your style rules are "makalat". Some are declared in the bottom of the page or at the top.
 ** It's better to have a separate file for your style rules, for organization and readability purposes.
 
 5. Indentions.
 Your codes do have indentions but it is inconsistent, some follow the 2-space tab, some follow 5-space tab.
 ** Be consistent in your indentions.
 ** Easier to read code (and more preferred by most developers) if you use the 2-space tab since the normal tab generates tabs that are too big.
+***WILL DO THIS DURING LATE PARTS OF DEV
 
 6. Page Titles
 **Add titles because the url (i.e. localhost/sbacms/views/contact.php) appears on the browser tab, not good to see.
@@ -66,7 +77,7 @@ Your codes do have indentions but it is inconsistent, some follow the 2-space ta
 Some of your php blocks are inside div tags and div tags contain nothing aside from the php blocks.
 
 9. Clean the code you copy paste.
-The placeholders in the registration pages all says "first name".
+i.e. The placeholders in the registration pages all says "first name".
 
 ------------
 
@@ -74,14 +85,15 @@ Design Comments (Mga personal opinion langs haha, doesn't really need to be cons
 - Overall, UI if pretty nice. Good job!
 
 1. Be consistent with the image size, lalo na sa carousel.
-Carousel looks nice, but image sizes are not uniform.
+Carousel looks nice, but image sizes are not uniform. (for old carousel only, was fixed)
 
 2. Some image sizes are too big. They fill up the entire screen if you're scrolling. Yung ibang images, you have to scroll a bit because they fill a very large part of the screen.
 
 3. Be consistent with fonts and font sizes as well.
 
+----------
 
-TO DO:
+TO DO: PLEASE ADD SPECIFIC FUNCTIONS THAT ARE STILL LACKING (i.e. Generate Report)
 ** I only tried to complete the items you have to show for your defense (some transaction and CRUD items) did not really consider UI na rin muna haha srry, sa next few weeks nalang yun after defense. Further code optimization and improvements still have to be done. 
 
 Some of them are the following (I encourage other team members to add to this as you see fit or comment on some items if you have questions or other ideas that may be considered more appropriate):
@@ -90,30 +102,24 @@ Some of them are the following (I encourage other team members to add to this as
     - Generate Reports
     -- please add other unfinished items
 
-2. Fix Login module to accomodate all user types (Merge login for employee of cutomer).
+2. Further normalization of database tables.
 
-3. Further normalization of database tables.
-    3. 1. Separate user credentials (username, email, pass) from user info (name, address, etc.).
-    WHY? Consider that most of the salon's clients would be walk-in, which means they do not have account credentials but the salon may make records of the customer's name and other info.
-    **All customers can have user info but not all need to have user credentials.
-    ***PLEASE LET ME KNOW WHAT YOU THINK OF THIS ITEM.
-
-4. Separate modules that are static and the same across sites and merge into one file then just import for page that need same content.
+3. Separate modules that are static and the same across sites and merge into one file then just import for page that need same content.
 *Dami kasing paulit ulit lang na content, pagisahin nalangs.
 
-5. ADD PAGE TITLES to pages
+4. ADD PAGE TITLES to pages
 
-6. Remove all internal stylesheets and transfer to external.
+5. Remove all internal stylesheets and transfer to external.
 
-7. FORM VALIDATION. VALIDATE ALL INPUT.
+6. FORM VALIDATION. VALIDATE ALL INPUT. CONSIDER USING REGEX (Regular Expressions)
 
-8. CODE CLEAN-UP/ OPTIMIZATION
+7. CODE CLEAN-UP/ OPTIMIZATION
 
-9. UI Improvements
+8. UI/UX Improvements
 
-10. File access security - Forbid access to directories. (i.e. User should not be able to see contents of 'http://localhost/sbacms/classes/' directory)
+9. File access security - Forbid access to directories. (i.e. User should not be able to see contents of 'http://localhost/sbacms/classes/' directory)
 
-11. Fill database with actual data -> gather from salon.
+10. Fill database with actual data -> gather from salon.
 
 
 

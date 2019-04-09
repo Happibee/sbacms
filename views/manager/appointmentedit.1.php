@@ -5,7 +5,7 @@
 	include_once "managerheader.php";
 	
 	if(!isset($_SESSION['employeeId'])){
-    	header('Location: ../employee/employeelogin.php');
+    	header('Location: ../util/login.php');
   	}
 ?>
 <div class="res">

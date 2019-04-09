@@ -2,10 +2,6 @@
 	session_start();
 	include_once 'adminheader.php';
 
-	if(!isset($_SESSION['employeeId'])){
-	  header("Location: ../employee/employeelogin.php");
-	}
-
 	$database = new Database();
   	$db = $database-> getConnection();
 

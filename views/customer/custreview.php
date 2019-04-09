@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	include_once 'includes/header.php';
-  	include_once '../classes/review.php';
+	include_once '../includes/tempo/header.php';
+  	include_once '../../classes/review.php';
 
-  	if(!isset($_SESSION['custId'])){
-  		header("Location: login.php");
+  	if(!isset($_SESSION['username']) && !isset($_SESSION['type']) == "Customer"){
+  		header("Location: ../util/login.php");
   	}
   	
     $database = new Database();

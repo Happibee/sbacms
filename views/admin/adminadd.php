@@ -2,8 +2,8 @@
 	session_start();
 	include_once "adminheader.php";
 
-  if(!isset($_SESSION['employeeId'])){
-      header('Location: ../employee/employeelogin.php');
+  if(!isset($_SESSION['username']) && isset($_SESSION['type']) == "Admin"){
+      header('Location: ../util/login.php');
   }
   elseif($employee->disableAddManager()){
     header('Location: adminhome.php');
@@ -11,8 +11,7 @@
 ?>
 
 <?php
-if(isset($_SESSION['employeeId'])){
-	if($_SESSION['type'] == 'Admin'){
+if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Admin"){  
 		$database = new Database();
           $db = $database->getConnection();
 
@@ -107,10 +106,9 @@ if(isset($_SESSION['employeeId'])){
         </div>
         </form>
 				";
-			}
 }
 else {
-	header("Location: ../employee/employeelogin.php");
+	header("Location: ../util/login.php");
 }
 
 ?>

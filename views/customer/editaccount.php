@@ -1,11 +1,11 @@
 <?php
 	session_start();
+	if(!isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer"){
+    	header('Location: ../util/login.php');
+	}
+	
 	include "../includes/tempo/header.php";
 	include_once "../../classes/customer.php";
-
-	if(!isset($_SESSION['custId'])){
-    	header('Location: login.php');
-	  }
 	  
 	$database = new Database();
   	$db = $database->getConnection();

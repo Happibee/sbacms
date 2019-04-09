@@ -2,7 +2,7 @@
 	session_start();
 	include_once "../includes/tempo/header.php";
 
-  	if(isset($_SESSION['custId'])){
+  	if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer"){
 			$database = new Database();
   			$db=$database->getConnection();
   
@@ -43,7 +43,7 @@
 			      <th scope='row'><h2>".$_SESSION['userName']."</h2></th>
 			      <td>".$_SESSION['firstName']."</td>
 			      <td>".$_SESSION['lastName']."</td>
-			      <td>".$_SESSION['emailAdd']."</td>
+			      <td>".$_SESSION['email']."</td>
 			      <td>1234567890</td>
 			      <td>Assumption Road, Baguio City</td>
 			    </tr>
@@ -52,9 +52,12 @@
 			</div>
 			";
 		}
+		elseif($_SESSION['type']) == "Customer"){
+			header("Location: employee/employee.php");
+		}
 		//redirect to login if id not in session
 		else {
-			header("Location: login.php");
+			header("Location: ../util/login.php");
 		}
 ?>
 			

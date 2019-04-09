@@ -3,10 +3,10 @@
   include_once '../classes/customer.php';
 
 
-  if(isset($_SESSION['custId'])){
+  if(isset($_SESSION['username']) && isset($_SESSION['type']) == "Customer"){
       echo "
       <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <a class='nav-item nav-link active' href='index.php'>
+      <a class='nav-item nav-link active' href='../index.php'>
           <img src='../assets/img/navbarlogo.png' width='200' height='35' class='d-inline-block align-top'>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
@@ -14,26 +14,38 @@
         </button>
       <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <div class='navbar-nav'>
-            <a class='nav-item nav-link active' href='index.php'>HOME<span class='sr-only'>(current)</span></a>
+            <a class='nav-item nav-link active' href='../index.php'>HOME<span class='sr-only'>(current)</span></a>
             <a class='nav-item nav-link' href='services.php'>SERVICES</a>
             <a class='nav-item nav-link' href='about.php'>ABOUT US</a>
             <a class='nav-item nav-link' href='contact.php'>CONTACT US</a>
             <a class='nav-item nav-link' href='customer/reservation.php'>SHEDULE NOW</a>
-            <a class='nav-item nav-link' href='review.php'><font color='#ff5ead'>RATE US!</font></a>
+            <a class='nav-item nav-link' href='custreview.php'><font color='#ff5ead'>RATE US!</font></a>
         </div>
         <div class='navbar-nav'>
         </div>
       </div>
-        <a class='nav-item nav-link' href='account.php'>Account</a>
-        <a class='nav-item nav-link' href='custappointment.php'>Appointments</a>
-        <a class='nav-item nav-link' href='record.php'><font color='black'>History</font></a>
+      <div class='btn-group'>
+      <a class='nav-link dropdown-toggle' href='#'' role='button' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        Action
+      </a>
+      <div class='dropdown-menu'>
+        <a class='dropdown-item' href='account.php'>Account</a>
+        <a class='dropdown-item' href='custappointment.php'>Appointments</a>
+        <a class='dropdown-item' href='feedbackcust.php'>Your Feedback</a>
+
+
+        <div class='dropdown-divider'></div>
+        <a class='dropdown-item' href='record.php'><font color='black'>History</font></a>
+      </div>
+    </div>
+      &nbsp&nbsp
         <a href='util/logout.php' class='btn btn-danger'>Log Out</a>
       </nav>";
     }
     else {
       echo "
       <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <a class='nav-item nav-link active' href='index.php'>
+      <a class='nav-item nav-link active' href='../index.php'>
           <img src='../assets/img/navbarlogo.png' width='200' height='35' class='d-inline-block align-top'>
       </a>
         <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
@@ -41,11 +53,12 @@
         </button>
       <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <div class='navbar-nav'>
-            <a class='nav-item nav-link' href='index.php'>HOME</a>
+            <a class='nav-item nav-link' href='../index.php'>HOME</a>
             <a class='nav-item nav-link' href='services.php'>SERVICES</a>
             <a class='nav-item nav-link' href='about.php'>ABOUT US</a>
             <a class='nav-item nav-link' href='contact.php'>CONTACT US</a>
             <a class='nav-item nav-link' href='util/login.php'>SHEDULE NOW</a>
+            <a class='nav-item nav-link' href='feedback.php'>FEEDBACK</a>
         </div>
         <div class='navbar-nav'>
         </div>
@@ -63,7 +76,7 @@
   <head>
     <title></title>
       <link rel="stylesheet" href="../assets/bootstrap/4.2.1/css/bootstrap.min.css">
-      <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+      <script src="../assets/jquery-3.3.1.min.js"></script>
       <script src="../assets/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
       <script src="../assets/bootstrap/4.2.1/js/bootstrap.min.js"></script>
       
@@ -98,6 +111,17 @@
     .form-gap {
     padding-top: 70px;
 }
+.card-inner{
+      margin-left: 4rem;
+    }
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 30px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+    }
 </style>
 </head>
 <body>

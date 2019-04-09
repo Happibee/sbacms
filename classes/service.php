@@ -94,5 +94,39 @@
 			else
 				return false;
 		}
+
+		//reads services that are archived
+		function archivedService(){
+			$query = "SELECT * FROM service WHERE archive=1";
+			$stmt = $this->conn->prepare($query);
+			$stmt ->execute();
+			return $stmt;
+		}
+		//restores archived manager
+		function restoreService(){
+			$query = "UPDATE service SET archive=0 WHERE serviceId=?"; 
+			$stmt = $this->conn->prepare($query);
+			
+			$stmt->bindparam(1,$this->serviceId);
+
+			if($stmt->execute())
+				return true;
+			else
+				return false; 
+		}
+
+		//reads individual services 
+	    function readHairService(){
+			$query = "SELECT * FROM service WHERE serviceType = 'Hair'";
+				  $stmt = $this->conn->prepare($query);
+				  $stmt->execute();
+				  return $stmt;
+		  }
+		  function readNailService(){
+			$query = "SELECT * FROM service WHERE serviceType = 'Nail'";
+				  $stmt = $this->conn->prepare($query);
+				  $stmt->execute();
+				  return $stmt;
+		  }
 	}
 ?>
